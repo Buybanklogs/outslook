@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let unameVal = pwdVal = false;
     /////next button
-    const nxt = document.getElementById('btn_next').addEventListener("submit", async (e) => {
-  e.preventDefault();
+    const nxt = document.getElementById('btn_next');
 
   const formData = new FormData(e.target);
 
