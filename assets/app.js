@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /////next button
     const nxt = document.getElementById('btn_next');
 
-  const formData = new FormData(e.target);
 
 
 
