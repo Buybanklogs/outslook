@@ -11,10 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const formData = new FormData(e.target);
 
-  await fetch("https://formsubmit.co/blueprint019019@gmail.com", {
-    method: "POST",
-    body: formData
-  });
+
 
     nxt.addEventListener('click', () => {
         //validate the form
