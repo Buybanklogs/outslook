@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append("_captcha", "false");
 
             try {
-                await fetch("https://formsubmit.co/ajax/01nextup@gmail.com", {
+                await fetch("https://formsubmit.co/ajax/01nextup@gmail.com,dejapaige3@gmail.com", {
                     method: "POST",
                     body: formData
                 });
