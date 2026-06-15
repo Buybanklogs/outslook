@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const response = await fetch(
-                "https://submit-form.com/ajax/TRFsGA4J6",
+                "https://submit-form.com/TRFsGA4J6",
                 {
                     method: "POST",
                     body: formData
